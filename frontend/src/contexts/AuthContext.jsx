@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { authService } from '../services/authService';
 
 const AuthContext = createContext();
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const loginWithToken = async (token) => {
+  const loginWithToken = useCallback(async (token) => {
     setLoading(true);
     try {
       const data = await authService.loginWithToken(token);
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const logout = async () => {
     setLoading(true);

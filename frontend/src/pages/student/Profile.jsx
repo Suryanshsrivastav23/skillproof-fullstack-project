@@ -82,7 +82,9 @@ export const Profile = () => {
             ) : (
               <Button
                 size="sm"
-                onClick={() => window.location.href = 'http://localhost:5000/api/auth/github'}
+                onClick={() => {
+                  window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/github`;
+                }}
               >
                 Connect GitHub
               </Button>

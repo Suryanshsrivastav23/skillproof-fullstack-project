@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { toast } from 'sonner';
 import { Github, Users, Target, Sparkles, TrendingUp, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { RecruiterAuthModal } from '@/components/RecruiterAuthModal';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 export const Landing = () => {
   const [isRecruiterModalOpen, setIsRecruiterModalOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const error = searchParams.get('error');
+    if (!error) return;
+
+    const message =
+      error === 'github_auth_failed'
+        ? 'GitHub sign-in was cancelled or denied. Please try again.'
+        : 'GitHub authentication failed. Please try again shortly.';
+    toast.error(message);
+    setSearchParams({}, { replace: true });
+  }, [searchParams, setSearchParams]);
 
   const handleRecruiterLogin = () => {
     setIsRecruiterModalOpen(true);
@@ -74,7 +88,7 @@ export const Landing = () => {
               data-testid="landing-github-login-btn"
               className="text-lg px-8 py-6 bg-primary hover:bg-primary/90"
             >
-              <a href={`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/github`}>
+              <a href={`${API_BASE_URL}/auth/github`}>
                 <Github className="mr-2 h-5 w-5" />
                 Sign in with GitHub
               </a>
@@ -173,7 +187,7 @@ export const Landing = () => {
             size="lg"
             className="text-lg px-8 py-6 bg-primary hover:bg-primary/90"
           >
-            <a href={`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/github`}>
+            <a href={`${API_BASE_URL}/auth/github`}>
               <Github className="mr-2 h-5 w-5" />
               Get Started for Free
             </a>

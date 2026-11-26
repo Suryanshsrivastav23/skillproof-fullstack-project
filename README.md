@@ -11,12 +11,10 @@
 
 ### 1. The Landing Page
 ![Landing Page](./screenshots/landing.png)
-*(Placeholder: Update with new Full-Stack Landing Page screenshot)*
 
 ### 2. Student Skill Dashboard
 The centralized hub showing verified scores, skill breakdown, and real-time alerts for incoming recruiter interview requests.
 ![Student Dashboard - Top](./screenshots/dashboard1.png)
-*(Placeholder: Add screenshot showing the new Blue Pending Invite Banner)*
 
 ### 3. Live AI Interview IDE (Powered by Gemini)
 An immersive testing environment where students solve real-world problems. Answers are submitted directly to the Node.js backend and rigorously evaluated in real-time by the Google Gemini AI.
@@ -37,7 +35,6 @@ Instant, actionable feedback powered by Gemini to ensure your uploaded resume by
 ### 7. Recruiter Candidate Discovery & ATS
 A powerful dashboard for recruiters to instantly discover pre-vetted talent, view GitHub stats, and manage **Live AI Interview Invites**.
 ![Recruiter Dashboard - Candidate Grid](./screenshots/recruiter1.png)
-*(Placeholder: Add screenshot of the new "Sent Invites" Tracker Tab showing Pending/Completed invites)*
 
 ---
 
